@@ -1,0 +1,77 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Knapsack Visualizer - [Page Title]</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Lato:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Style.css".css">
+</head>
+<body>
+  <nav class="nav__cont">
+    <ul class="nav">
+      <li class="nav__items">
+        <span class="nav-icon">📘</span>
+        <a href="index.html">Introduction</a>
+      </li>
+      <li class="nav__items">
+        <span class="nav-icon">⚙️</span>
+        <a href="Algorithm.html">Algorithm</a>
+      </li>
+      <li class="nav__items">
+        <span class="nav-icon">🧪</span>
+        <a href="Demo.html">Demonstration</a>
+      </li>
+      <li class="nav__items">
+        <span class="nav-icon">💻</span>
+        <a href="Code.html">Code</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+  <header>
+    <h1 class="main-title">Brute Force Algorithm</h1>
+    <p class="intro-lead">Algorithm that describes our approach to solving the 0/1 knapsack problem.</p>
+  </header>
+
+  <section class="intro-section">
+    <div class="intro-block">
+      <h2>Understanding the Brute Force Approach</h2>
+      <p>
+        Brute force is a straightforward approach to solving a problem, usually directly based on
+        the problem’s statement and definitions of the concepts involved. If there are <strong>n items</strong> to
+        choose from, then there will be <code>2ⁿ</code> possible combinations of items for the knapsack.
+        An item is either chosen or not chosen. A bit string of 0’s and 1’s is generated of length <code>n</code>.
+        If the <code>i<sup>th</sup></code> symbol of a bit string is 0, the <code>i<sup>th</sup></code> item is not chosen; if it is 1, the item is included.
+      </p>
+    </div>
+
+    <div class="intro-block">
+      <h2>Brute Force Algorithm (Pseudocode)</h2>
+      <img src="Algorithm.png" alt="Brute Force Knapsack Algorithm" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+    </div>
+
+    <div class="intro-block">
+      <h2>Time Complexity Analysis</h2>
+      <img src="Complexity.png" alt="Brute Force Complexity Analysis" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+    </div>
+
+    <div class="intro-block">
+      <h2>Summary</h2>
+      <p>
+        Therefore, the time complexity of the Brute Force algorithm is <code>O(n·2ⁿ)</code>.
+        Since this grows exponentially, it is only feasible for small instances of the knapsack problem.
+        However, it's conceptually simple and does not require sophisticated programming techniques.
+      </p>
+      <p>
+        Besides the memory used to store the values and weights of all items, the algorithm
+        only requires two one-dimensional arrays: <code>A[]</code> and <code>bestChoice[]</code>.
+      </p>
+    </div>
+  </section>
+</div>
+
+
+  <script src="Demo.js"></script>
+</body>
+</html>

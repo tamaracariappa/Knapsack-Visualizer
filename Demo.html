@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Knapsack Brute Force Visualizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Lato:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+     <nav class="nav__cont">
+    <ul class="nav">
+      <li class="nav__items">
+        <span class="nav-icon">📘</span>
+        <a href="index.html">Introduction</a>
+      </li>
+      <li class="nav__items">
+        <span class="nav-icon">⚙️</span>
+        <a href="Algorithm.html">Algorithm</a>
+      </li>
+      <li class="nav__items">
+        <span class="nav-icon">🧪</span>
+        <a href="Demo.html">Demonstration</a>
+      </li>
+      <li class="nav__items">
+        <span class="nav-icon">💻</span>
+        <a href="Code.html">Code</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content Wrapper -->
+  <div class="wrapper">
+  <h1>Knapsack Algorithm - Brute Force</h1>
+  <div id="loadingSpinner" class="spinner" style="display:none;"></div>
+  <div class="input-container">
+    <div class="input-group">
+      <label class="input-label">Enter Weights:</label>
+      <input type="text" placeholder="e.g. 10, 20, 30" id="weightsInput" />
+    </div>
+    <div class="input-group">
+      <label class="input-label">Enter Values:</label>
+      <input type="text" placeholder="e.g. 60, 100, 120" id="valuesInput" />
+    </div>
+    <div class="input-group">
+      <label class="input-label">Enter Max Weight:</label>
+      <input type="text" placeholder="e.g. 50" id="capacityInput" onchange="updateRectangle()" />
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button class="button solve" onclick="solveKnapsack()">Solve</button>
+    <button class="button reset" onclick="resetInputs()">Reset</button>
+  </div>
+
+  <div class="animation-controls">
+    <div class="speed-controls-row">
+      <button class="speed-btn" onclick="setAnimationSpeed(2000)">0.25x</button>
+      <button class="speed-btn" onclick="setAnimationSpeed(1000)">0.5x</button>
+      <button class="speed-btn" onclick="setAnimationSpeed(750)">0.75x</button>
+      <button class="speed-btn active" onclick="setAnimationSpeed(500)">1x</button>
+      <button class="speed-btn" onclick="setAnimationSpeed(400)">1.25x</button>
+      <button class="speed-btn" onclick="setAnimationSpeed(333)">1.5x</button>
+      <button class="speed-btn" onclick="setAnimationSpeed(285)">1.75x</button>
+      <button class="speed-btn" onclick="setAnimationSpeed(250)">2x</button>
+      <button class="animation-toggle" onclick="toggleAnimations()">Pause</button>
+    </div>
+
+    <div class="speed-slider-container">
+      <span>Slower</span>
+      <input type="range" id="speedSlider" class="speed-slider" min="100" max="2000" value="500" step="50" oninput="updateSpeedSlider()">
+      <span>Faster</span>
+      <span id="speedValue" class="speed-value">1x</span>
+    </div>
+  </div>
+
+  <div class="result-section">
+    <div class="visualization-container">
+      <div class="knapsack-visual">
+        <div class="capacity-indicator">
+          <span id="capacityDisplay">0</span>
+          <span class="capacity-label">Capacity</span>
+        </div>
+        <div id="knapsackContents" class="knapsack-contents"></div>
+      </div>
+
+      <div class="items-list">
+        <h3>Items</h3>
+        <ul id="itemsList"></ul>
+      </div>
+
+      <div class="step-info">
+        <h3>Step <span id="stepNumber">0</span> of <span id="totalSteps">0</span></h3>
+        <div class="step-details">
+          <p><strong>Items being tested:</strong> <span id="currentItems">None</span></p>
+          <p><strong>Total weight:</strong> <span id="totalWeight">0</span></p>
+          <p><strong>Total value:</strong> <span id="totalValue">0</span></p>
+          <p><strong>Result:</strong> <span id="resultStatus">Waiting to start</span></p>
+          <p><strong>Remaining space:</strong> <span id="remainingSpace">0</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <ul class="responsive-table" id="resultTable">
+        <li class="table-header">
+          <div>Items</div>
+          <div>Weight</div>
+          <div>Value</div>
+          <div>Space Left</div>
+          <div>Feasible</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="results"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
+  <script src="Demo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
+    <script src="Demo.js"></script>
+  </div>
+</body>
+</html>

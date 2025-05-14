@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Knapsack Problem</title>
+  <link rel="stylesheet" href="Style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Lato:wght@700&display=swap" rel="stylesheet" />
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Highlight current page in nav
+    document.querySelectorAll('.nav__items').forEach(item => {
+      if (item.querySelector('a').getAttribute('href') === 'Index.html') {
+        item.classList.add('active');
+      }
+    });
+  });
+</script>
+</head>
+<body>
+   
+    <nav class="nav__cont">
+    <ul class="nav">
+      <li class="nav__items">
+        <span class="nav-icon">📘</span>
+        <a href="index.html">Introduction</a>
+      </li>
+      <li class="nav__items">
+        <span class="nav-icon">⚙️</span>
+        <a href="Algorithm.html">Algorithm</a>
+      </li>
+      <li class="nav__items">
+        <span class="nav-icon">🧪</span>
+        <a href="Demo.html">Demonstration</a>
+      </li>
+      <li class="nav__items">
+        <span class="nav-icon">💻</span>
+        <a href="Code.html">Code</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="main-title"> The Knapsack Problem</h1>
+      <p class="intro-lead">The Knapsack problem is a combinatorial optimization problem where one has to maximize the benefit of objects in a knapsack without exceeding its capacity. It is an NP-complete problem and as such an exact solution for a large input is practically impossible to obtain.</p>
+    </header>
+
+    <section class="intro-section">
+
+  <div class="intro-block">
+    <h2>The 0/1 Knapsack Problem</h2>
+    <p>
+      Given <strong>n items</strong> with weights <em>w₁, w₂,...,wₙ</em> and values <em>v₁, v₂,...,vₙ</em>, and a knapsack of capacity <strong>W</strong>,
+      the goal is to find the most valuable subset of items that can fit into the knapsack.
+    </p>
+    <p>
+      If imagining yourself as a thief feels unethical, consider this alternative: a <strong>transport plane</strong> tasked with
+      delivering the most valuable cargo to a remote area without exceeding the plane's capacity.
+    </p>
+    <p>
+      The brute-force approach generates <strong>all 2ⁿ subsets</strong>, filters out those that exceed the weight limit, and selects
+      the one with the highest value. This exponential complexity is why the 0/1 Knapsack is a textbook
+      example of an <strong>NP-hard</strong> problem.
+    </p>
+    <p>
+      While exhaustive search ensures correctness, it’s impractical for large inputs. Advanced methods like
+      <strong>backtracking</strong>, <strong>branch-and-bound</strong>, and <strong>approximation algorithms</strong> help solve specific cases more efficiently.
+    </p>
+  </div>
+
+  <div class="intro-block">
+    <h2>Rules</h2>
+    <ul>
+      <li>Each item has a <strong>weight</strong> and a <strong>value</strong>.</li>
+      <li>The knapsack has a <strong>maximum weight capacity</strong>.</li>
+      <li>You can either take an item or leave it — <strong>no fractional choices</strong>.</li>
+      <li><strong>Goal:</strong> Maximize the total value of items without exceeding the weight limit.</li>
+    </ul>
+  </div>
+
+  <div class="intro-block">
+    <h2>The Brute Force Approach</h2>
+    <p>
+      Brute force involves testing every combination of items to identify the most valuable one within the weight limit.
+    </p>
+    <ol>
+      <li>Evaluate all possible combinations.</li>
+      <li>Filter out combinations that exceed the capacity.</li>
+      <li>Choose the combination with the highest value.</li>
+    </ol>
+  </div>
+
+  <div class="intro-block">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Check if the current item fits in the remaining capacity.</li>
+      <li>If yes, calculate the value by including it, and move to the next item.</li>
+      <li>Also calculate the value if the item is excluded.</li>
+      <li>Return the maximum of both cases.</li>
+    </ol>
+  </div>
+
+  <div class="intro-block">
+    <h2>Approaches to Solve the Problem</h2>
+    <ul>
+      <li><strong>Brute Force:</strong> Tries all combinations. Exact but slow (used in this tool).</li>
+      <li><strong>Greedy:</strong> Uses value-to-weight ratio (works for fractional version).</li>
+      <li><strong>Dynamic Programming:</strong> Efficient and exact using bottom-up tables.</li>
+      <li><strong>Backtracking:</strong> Prunes unpromising branches during exploration.</li>
+    </ul>
+    <p>
+      This visualizer uses the <strong>brute-force</strong> method to show how all subsets are evaluated and compared.
+    </p>
+  </div>
+
+  <div class="intro-block">
+    <h2>Time and Space Complexity</h2>
+    <ul>
+      <li><strong>Brute Force:</strong> Time = O(2ⁿ), Space = O(n)</li>
+      <li><strong>Dynamic Programming:</strong> Time = O(nW), Space = O(nW)</li>
+      <li><strong>Greedy (fractional):</strong> Time = O(n log n)</li>
+    </ul>
+    <p>
+      The brute-force approach becomes impractical as <em>n</em> increases. Visualization helps grasp how the search space
+      grows and why optimization techniques are necessary in real-world applications.
+    </p>
+  </div>
+
+</section>
+
+
+  </div>
+</body>
+</html>

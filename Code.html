@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Knapsack Code</title>
+  <link rel="stylesheet" href="Style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Lato:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="nav__cont">
+    <ul class="nav">
+      <li class="nav__items"><span class="nav-icon">📘</span><a href="index.html">Introduction</a></li>
+      <li class="nav__items"><span class="nav-icon">⚙️</span><a href="Algorithm.html">Algorithm</a></li>
+      <li class="nav__items"><span class="nav-icon">🧪</span><a href="Demo.html">Demonstration</a></li>
+      <li class="nav__items active"><span class="nav-icon">💻</span><a href="Code.html">Code</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="main-title">Brute Force Knapsack Code</h1>
+      <p class="intro-lead">Select a language tab to view its corresponding brute-force implementation code</p>
+    </header>
+
+    <section class="intro-section">
+      <!-- Language Tabs -->
+      <div class="tabs">
+        <button class="tab-btn ui-btn active" data-tab="python"><span>Python</span></button>
+        <button class="tab-btn ui-btn" data-tab="java"><span>Java</span></button>
+        <button class="tab-btn ui-btn" data-tab="c"><span>C</span></button>
+
+      </div>
+
+      <!-- Python Panel -->
+      <div id="python" class="code-panel active">
+        <div class="code-editor">
+          <div class="header">
+            <span class="title">Python</span>
+            <button class="copy-btn" onclick="copyCode('py')">
+  <span>Copy</span>
+  <span>Copied</span>
+</button>
+
+          </div>
+          <div class="editor-content" id="py">
+            <code class="code">
+              <p><span class="color-0">def</span> <span class="color-1">brute_force_knapsack</span>(weights, values, capacity):</p>
+              <p class="property">n = <span class="color-1">len</span>(weights)</p>
+              <p class="property">A = [0] * n</p>
+              <p class="property">best_value = 0</p>
+              <p class="property">best_weight = 0</p>
+              <p class="property">best_choice = [0] * n</p>
+              <br />
+              <p class="property"><span class="color-0">for</span> i <span class="color-0">in</span> <span class="color-1">range</span>(1, 2 ** n):</p>
+              <p class="property indent-1">j = n - 1</p>
+              <p class="property indent-1">temp_weight = 0</p>
+              <p class="property indent-1">temp_value = 0</p>
+              <br />
+              <p class="property indent-1"><span class="color-0">while</span> j &gt;= 0 <span class="color-0">and</span> A[j] == 1:</p>
+              <p class="property indent-2">A[j] = 0</p>
+              <p class="property indent-2">j -= 1</p>
+              <p class="property indent-1"><span class="color-0">if</span> j &gt;= 0:</p>
+              <p class="property indent-2">A[j] = 1</p>
+              <br />
+              <p class="property indent-1"><span class="color-0">for</span> k <span class="color-0">in</span> <span class="color-1">range</span>(n):</p>
+              <p class="property indent-2"><span class="color-0">if</span> A[k] == 1:</p>
+              <p class="property indent-3">temp_weight += weights[k]</p>
+              <p class="property indent-3">temp_value += values[k]</p>
+              <br />
+              <p class="property indent-1"><span class="color-0">if</span> temp_value &gt; best_value <span class="color-0">and</span> temp_weight &lt;= capacity:</p>
+              <p class="property indent-2">best_value = temp_value</p>
+              <p class="property indent-2">best_weight = temp_weight</p>
+              <p class="property indent-2">best_choice = A[:]</p>
+              <br />
+              <p class="property">included_items = [i + 1 <span class="color-0">for</span> i <span class="color-0">in</span> <span class="color-1">range</span>(n) <span class="color-0">if</span> best_choice[i] == 1]</p>
+              <p class="property">print(<span class="color-3">"Including item numbers:"</span>, included_items)</p>
+              <p class="property">print(<span class="color-3">"Total value:"</span>, best_value)</p>
+              <p class="property">print(<span class="color-3">"Total weight:"</span>, best_weight)</p>
+              <br />
+              <p class="property"><span class="color-0">return</span> best_choice, best_value, best_weight</p>
+            </code>
+          </div>
+        </div>
+      </div>
+
+     <!-- Java Panel -->
+<!-- Java Panel -->
+<div id="java" class="code-panel">
+  <div class="code-editor">
+    <div class="header">
+      <span class="title">Java</span>
+      <button class="copy-btn" onclick="copyCode('java')">
+  <span>Copy</span>
+  <span>Copied</span>
+</button>
+
+    </div>
+    <div class="editor-content" id="java">
+      <code class="code">
+        <p><span class="color-0">import</span> java.util.*;</p>
+        <p><span class="color-0">public class</span> <span class="color-1">Knapsack</span> {</p>
+        <p class="property indent-1"><span class="color-0">public static void</span> <span class="color-1">bruteForceKnapsack</span>(<span class="color-2">int</span>[] weights, <span class="color-2">int</span>[] values, <span class="color-2">int</span> capacity) {</p>
+        <p class="property indent-2"><span class="color-2">int</span> n = weights.length;</p>
+        <p class="property indent-2"><span class="color-2">int</span>[] A = <span class="color-0">new</span> <span class="color-2">int</span>[n];</p>
+        <p class="property indent-2"><span class="color-2">int</span> bestValue = 0, bestWeight = 0;</p>
+        <p class="property indent-2"><span class="color-2">int</span>[] bestChoice = <span class="color-0">new</span> <span class="color-2">int</span>[n];</p>
+        <p class="property indent-2"><span class="color-0">for</span> (<span class="color-2">int</span> i = 1; i &lt; (1 &lt;&lt; n); i++) {</p>
+        <p class="property indent-3"><span class="color-2">int</span> j = n - 1, tempWeight = 0, tempValue = 0;</p>
+        <p class="property indent-3"><span class="color-0">while</span> (j &gt;= 0 &amp;&amp; A[j] == 1) { A[j] = 0; j--; }</p>
+        <p class="property indent-3"><span class="color-0">if</span> (j &gt;= 0) A[j] = 1;</p>
+        <p class="property indent-3"><span class="color-0">for</span> (<span class="color-2">int</span> k = 0; k &lt; n; k++)</p>
+        <p class="property indent-4"><span class="color-0">if</span> (A[k] == 1) { tempWeight += weights[k]; tempValue += values[k]; }</p>
+        <p class="property indent-3"><span class="color-0">if</span> (tempValue &gt; bestValue &amp;&amp; tempWeight &lt;= capacity) {</p>
+        <p class="property indent-4">bestValue = tempValue; bestWeight = tempWeight;</p>
+        <p class="property indent-4"><span class="color-1">System.arraycopy</span>(A, 0, bestChoice, 0, n);</p>
+        <p class="property indent-3">}</p>
+        <p class="property indent-2">}</p>
+        <p class="property indent-2"><span class="color-2">List</span>&lt;<span class="color-2">Integer</span>&gt; items = <span class="color-0">new</span> <span class="color-1">ArrayList</span>&lt;&gt;();</p>
+        <p class="property indent-2"><span class="color-0">for</span> (<span class="color-2">int</span> i = 0; i &lt; n; i++) <span class="color-0">if</span> (bestChoice[i] == 1) items.add(i + 1);</p>
+        <p class="property indent-2"><span class="color-1">System.out.println</span>(<span class="color-3">"Including item numbers: "</span> + items);</p>
+        <p class="property indent-2"><span class="color-1">System.out.println</span>(<span class="color-3">"Total value: "</span> + bestValue);</p>
+        <p class="property indent-2"><span class="color-1">System.out.println</span>(<span class="color-3">"Total weight: "</span> + bestWeight);</p>
+        <p class="property indent-1">}</p>
+        <p>}</p>
+      </code>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- C Panel -->
+<div id="c" class="code-panel">
+  <div class="code-editor">
+    <div class="header">
+      <span class="title">C</span>
+      <button class="copy-btn" onclick="copyCode('c')">
+  <span>Copy</span>
+  <span>Copied</span>
+</button>
+
+    </div>
+    <div class="editor-content" id="c">
+      <code class="code">
+        <p><span class="color-0">#include</span> &lt;stdio.h&gt;</p>
+        <p><span class="color-0">#include</span> &lt;stdlib.h&gt;</p>
+        <br/>
+        <p><span class="color-0">void</span> <span class="color-1">bruteForceKnapsack</span>(<span class="color-2">int</span>* weights, <span class="color-2">int</span>* values, <span class="color-2">int</span> capacity, <span class="color-2">int</span> n) {</p>
+        <p class="property indent-1"><span class="color-2">int</span>* A = (<span class="color-2">int</span>*)<span class="color-1">malloc</span>(n * <span class="color-1">sizeof</span>(<span class="color-2">int</span>));</p>
+        <p class="property indent-1"><span class="color-2">int</span> bestValue = 0, bestWeight = 0;</p>
+        <p class="property indent-1"><span class="color-2">int</span>* bestChoice = (<span class="color-2">int</span>*)<span class="color-1">malloc</span>(n * <span class="color-1">sizeof</span>(<span class="color-2">int</span>));</p>
+        <p class="property indent-1"><span class="color-0">for</span> (<span class="color-2">int</span> i = 1; i &lt; (1 &lt;&lt; n); i++) {</p>
+        <p class="property indent-2"><span class="color-2">int</span> j = n - 1, tempWeight = 0, tempValue = 0;</p>
+        <p class="property indent-2"><span class="color-0">while</span> (j &gt;= 0 &amp;&amp; A[j] == 1) { A[j] = 0; j--; }</p>
+        <p class="property indent-2"><span class="color-0">if</span> (j &gt;= 0) A[j] = 1;</p>
+        <p class="property indent-2"><span class="color-0">for</span> (<span class="color-2">int</span> k = 0; k &lt; n; k++) <span class="color-0">if</span> (A[k] == 1) { tempWeight += weights[k]; tempValue += values[k]; }</p>
+        <p class="property indent-2"><span class="color-0">if</span> (tempValue &gt; bestValue &amp;&amp; tempWeight &lt;= capacity) {</p>
+        <p class="property indent-3">bestValue = tempValue; bestWeight = tempWeight;</p>
+        <p class="property indent-3"><span class="color-0">for</span> (<span class="color-2">int</span> k = 0; k &lt; n; k++) bestChoice[k] = A[k];</p>
+        <p class="property indent-2">}</p>
+        <p class="property indent-1">}</p>
+        <p class="property indent-1"><span class="color-1">printf</span>(<span class="color-3">"Including item numbers: "</span>);</p>
+        <p class="property indent-1"><span class="color-0">for</span> (<span class="color-2">int</span> i = 0; i &lt; n; i++) <span class="color-0">if</span> (bestChoice[i] == 1) <span class="color-1">printf</span>(<span class="color-3">"%d "</span>, i + 1);</p>
+        <p class="property indent-1"><span class="color-1">printf</span>(<span class="color-3">"\nTotal value: %d\n"</span>, bestValue);</p>
+        <p class="property indent-1"><span class="color-1">printf</span>(<span class="color-3">"Total weight: %d\n"</span>, bestWeight);</p>
+        <p class="property indent-1"><span class="color-1">free</span>(A); <span class="color-1">free</span>(bestChoice);</p>
+        <p>}</p>
+      </code>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const codePanels = document.querySelectorAll('.code-panel');
+
+  // Add ARIA roles for accessibility
+  tabButtons.forEach((btn, idx) => {
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', btn.classList.contains('active') ? 'true' : 'false');
+    btn.setAttribute('aria-controls', btn.dataset.tab);
+    btn.setAttribute('tabindex', btn.classList.contains('active') ? '0' : '-1');
+  });
+
+  codePanels.forEach(panel => {
+    panel.setAttribute('role', 'tabpanel');
+    panel.setAttribute('aria-hidden', panel.classList.contains('active') ? 'false' : 'true');
+  });
+
+  function activateTab(tab) {
+    const targetId = tab.dataset.tab;
+
+    tabButtons.forEach(btn => {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-selected', 'false');
+      btn.setAttribute('tabindex', '-1');
+    });
+
+    codePanels.forEach(panel => {
+      panel.classList.remove('active');
+      panel.setAttribute('aria-hidden', 'true');
+    });
+
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+
+    const targetPanel = document.getElementById(targetId);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+      targetPanel.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  tabButtons.forEach(tab => {
+    tab.addEventListener('click', () => activateTab(tab));
+    tab.addEventListener('keydown', (e) => {
+      let newIndex;
+      const currentIndex = [...tabButtons].indexOf(document.activeElement);
+
+      if (e.key === 'ArrowRight') {
+        newIndex = (currentIndex + 1) % tabButtons.length;
+        tabButtons[newIndex].focus();
+      }
+      if (e.key === 'ArrowLeft') {
+        newIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+        tabButtons[newIndex].focus();
+      }
+    });
+  });
+
+  // Optional: Activate tab from URL hash (e.g., #java)
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      const matchingTab = [...tabButtons].find(btn => btn.dataset.tab === hash);
+      if (matchingTab) activateTab(matchingTab);
+    }
+  });
+
+  function copyCode(id) {
+    const codeText = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(codeText).then(() => {
+      const btn = document.querySelector(`button[onclick="copyCode('${id}')"]`);
+      btn.focus(); // triggers the animation
+      setTimeout(() => btn.blur(), 1500); // resets it back
+    });
+  }
+</script>
+
+</body>
+</html>
